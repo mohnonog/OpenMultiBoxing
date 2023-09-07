@@ -3914,7 +3914,7 @@ array set settings {
     layoutAuto 1
     layoutTop 0
     showOverlay 1
-    overlayFocusColor "#ff0080"
+    overlayFocusColor "#0080ff"
     overlayAlpha 0.7
     overlayAnchor n
     overlayShowBorder 1
