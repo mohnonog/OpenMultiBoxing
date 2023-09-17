@@ -38,7 +38,7 @@ Note: key broadcasting replaces round robin in the latest version of OpenMultiBo
 
 OpenMultiBoxing is optimized for Microsoft Windows 10 or newer (works great with Windows 11).
 
-New since version 2.2 we made a compact all in one .exe binary distribution. Just grab the latest binary Zip file (e.g `OpenMultiBoxing-vX.Y.Z.zip`, not the source zip) and extract all to your desktop for instance. The binaries are built automatically by the Github CI and can be found on the [releases page](https://github.com/OpenMultiBoxing/OpenMultiBoxing/releases).
+New since version 2.2 we made a compact all in one .exe binary distribution. Just grab the latest binary Zip file (e.g `OpenMultiBoxing-vX.Y.Z.zip`, not the source zip) and extract all to your desktop for instance. The binary (unlike WOB, there is a single binary in the latest OMB releases, that does broadcasting, without Round Robin (RR)) are built automatically by the Github CI and can be found on the [releases page](https://github.com/OpenMultiBoxing/OpenMultiBoxing/releases).
 
 Go through the Window Layout Wizard to pick how many game windows you plan on playing with and their layout, save and apply.
 
