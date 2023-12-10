@@ -1046,7 +1046,7 @@ proc MenuSetup {} {
  }
 
 proc MouseBroadcast {} {
-    global mouseBroadcast mouseFollow rrOn settings
+    global mouseBroadcast mouseFollow settings
     set mouseBroadcast [expr {1-$mouseBroadcast}]
     if {$mouseBroadcast} {
         if {$mouseFollow && $settings(mouseBroadcastUsePostMessage)} {
@@ -1054,7 +1054,7 @@ proc MouseBroadcast {} {
             FocusFollowMouseToggle
         }
     } else {
-        if {!$mouseFollow && !$rrOn && $settings(mouseBroadcastUsePostMessage)} {
+        if {!$mouseFollow && $settings(mouseBroadcastUsePostMessage)} {
             # Turn (back) on mouse focus
             FocusFollowMouseToggle
         }
@@ -2961,22 +2961,26 @@ proc DeltaKeyboardState {oldState newState} {
     return [list $resUp $resDown]
 }
 
+# Returns which game window has the keyboard focus
+# returns <= 0 if not a game window
+proc FocusIn {} {
+    if {[catch {twapi::get_foreground_window} focus]} {
+        Debug "FocusIn: failed to get foreground window: $focus"
+        return 0
+    }
+    expr {[IsOurs $focus]-2}
+}
 
+# Main broadcast setup
 proc RRCheck {} {
     global rrCodes rrCodesCustom rrCodesDirect rrExcludes rrLastCode rrLastCustom rrTaskId settings maxNumW slot2position
     set rrTaskId [after $settings(rrInterval) RRCheck]
     #Debug "RR Check..."
-    set n 1
-    set m [MouseIsIn]
-    if {$m!=$n} {
-        #Debug "Mouse not in $n"
+    set n [FocusIn]
+    if {$n<=0} {
+        #Debug "Mouse not in game window"
         return
     }
-    if {![info exists slot2position(1)]} {
-        #Debug "No game window in slot 1"
-        return
-    }
-    set n $slot2position(1)
     foreach code $rrExcludes {
         set state [twapi::GetAsyncKeyState $code]
         if {$state != 0} {
