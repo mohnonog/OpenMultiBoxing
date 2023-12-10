@@ -2968,6 +2968,11 @@ proc FocusIn {} {
         Debug "FocusIn: failed to get foreground window: $focus"
         return 0
     }
+    # somehow returns empty at times
+    if {$focus == ""} {
+        Debug "FocusIn: no foreground window"
+        return 0
+    }
     expr {[IsOurs $focus]-2}
 }
 
