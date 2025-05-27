@@ -337,6 +337,7 @@ proc Master {s} {
                 twapi::move_mouse $xx $yy
                 if {$button!=""} {
                     twapi::click_mouse_button $button
+                    twapi::click_mouse_button $button
                 }
             }
         }
