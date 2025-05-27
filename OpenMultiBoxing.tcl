@@ -1197,11 +1197,13 @@ proc ClickWindowRel {n xp yp button} {
         twapi::PostMessage $w $WM_LBUTTONDOWN $wParam $lword
         twapi::PostMessage $w $WM_LBUTTONUP 0 $lword
         after $settings(mouseBroadcastDelay)
+        Debug "second"
         twapi::PostMessage $w $WM_LBUTTONDOWN $wParam $lword
         twapi::PostMessage $w $WM_LBUTTONUP 0 $lword
     } else {
         twapi::click_mouse_button $button
         after $settings(mouseBroadcastDelay)
+        Debug "second"
         twapi::click_mouse_button $button
     }
     after $settings(mouseBroadcastDelay)
